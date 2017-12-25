@@ -1,0 +1,85 @@
+<div id="page-contents">
+  <div class="container">
+    <div class="row">
+
+      <!-- Newsfeed Common Side Bar Left
+      ================================================= -->
+      <div class="col-md-3 static">
+        <div class="profile-card">
+          <!--<img src="http://placehold.it/300x300" alt="user" class="profile-photo" />-->
+          <h5><a href="<%=news_url%>" class="text-white"><%=current_user.first_name%> <%=current_user.last_name%></a></h5>
+        </div><!--profile card ends-->
+        <ul class="nav-news-feed">
+          <li><i class="icon ion-ios-paper"></i><div><a href="<%=news_url%>">Haber Kaynağı</a></div></li>
+        </ul><!--news-feed links ends-->
+      </div>
+
+      <div class="col-md-9">
+
+        <!-- Post Create Box
+        ================================================= -->
+        <div class="create-post">
+          <div class="row">
+            <%= form_with(model: @post, local: true) do |form| %>
+            <div class="col-md-9 col-sm-9">
+              <div class="form-group">
+                <%= form.text_field :title, id: :post_title, style: "width: 1px; visibility: hidden;" %>
+                <%= form.text_area :msg, id: :post_msg, cols:'100', rows:'1', class:'form-control', placeholder: "Ne düşünüyorsun?", style:"height: 50px;"%>
+                <%= form.file_field :image, style: "width: 1px; visibility: hidden;", id: "file_input" %>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="tools">
+                <ul class="publishing-tools list-inline">
+                  <li><a href="#" id="file_button"><i class="ion-images"></i></a></li>
+                </ul>
+                <button type="submit" class="btn btn-primary pull-right">Yayınla</button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div><!-- Post Create Box End-->
+
+        <!-- Post Content
+        ================================================= -->
+        <% @posts.each do |post| %>
+          <div class="post-content">
+            <% if post.image? %>
+              <%= image_tag post.image.url, class: 'img-responsive post-image' %>
+            <% end %>
+            <div class="post-container">
+              <div class="post-detail">
+                <div class="user-info">
+                  <h5><a href="<%=news_url%>" class="profile-link"><%= post.user.first_name %> <%= post.user.last_name %></a></h5>
+                  <p class="text-muted"><%= time_ago_in_words(post.created_at) %></p>
+                </div>
+                <div class="reaction" id="<%=post.id%>">
+                  <%if Like.where(user:current_user, post:post).count>0%>
+                    <%= link_to raw('<i class="icon ion-thumbsup"></i> ' + Like.where(post:post).count.to_s), unlike_post_path(post), class:"btn text-green",remote: :true, method: :put %>
+                  <%else%>
+                  <%= link_to raw('<i class="fa fa-thumbs-down"></i> ' + Like.where(post:post).count.to_s), like_post_path(post), class:"btn text-red",remote: :true, method: :put %>
+                  <%end%>
+                </div>
+                <div class="line-divider"></div>
+                <div class="post-text">
+                  <p><%= post.msg %><i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                </div>
+                <div class="line-divider"></div>
+                <div id="comments-<%=post.id%>">
+                  <% post.comments.each do |comment| %>
+                    <div class="post-comment">
+                      <p><a href="#" class="profile-link"><%= comment.user.first_name %> </a><i class="em em-laughing"></i> <%= comment.bdy %> </p>
+                    </div>
+                  <% end %>
+                </div>
+                <%= form_for([post, Comment.new], :remote=>'true', :controller => 'comments', :action => 'create', html: { class: "post-comment" }) do |f| %>
+                  <%= f.text_field :bdy, id: :comment_bdy, class:"form-control", placeholder: "Yorum yaz", id: "comment_input-"+post.id.to_s %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

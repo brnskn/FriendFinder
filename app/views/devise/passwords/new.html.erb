@@ -1,0 +1,24 @@
+<div id="page-contents">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="contact-us" style="margin-top: 0px;">
+          <div class="row">
+            <div class="col-md-8 col-sm-7">
+              <h4 class="grey">Şifremi Unuttum</h4>
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "contact-form" }) do |f| %>
+                <%= devise_error_messages! %>
+                <div class="form-group">
+                  <i class="icon ion-email"></i>
+                  <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email *", required: "required" %>
+                </div>
+                <button class="btn-primary">Şifremi Sıfırla</button>
+                <%= render "devise/shared/links" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

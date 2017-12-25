@@ -1,0 +1,1 @@
+$('#<%=@post.id%>').html('<%= link_to raw('<i class="fa fa-thumbs-down"></i> ' + Like.where(post:@post).count.to_s), like_post_path(@post), class:"btn text-red",remote: :true, method: :put %>')

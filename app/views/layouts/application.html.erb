@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="This is social network html5 template available in themeforest......" />
+		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+		<meta name="robots" content="index, follow" />
+		<title>Friend Finder</title>
+    <%= csrf_meta_tags %>
+    <!-- Stylesheets
+    ================================================= -->
+    <% Rails.application.config.assets.precompile += %w( bootstrap.min.css ) %>
+    <% Rails.application.config.assets.precompile += %w( style.css ) %>
+    <% Rails.application.config.assets.precompile += %w( ionicons.min.css ) %>
+    <% Rails.application.config.assets.precompile += %w( font-awesome.min.css ) %>
+    <%= stylesheet_link_tag    'bootstrap.min.css', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= stylesheet_link_tag    'style.css', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= stylesheet_link_tag    'ionicons.min.css', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= stylesheet_link_tag    'font-awesome.min.css', media: 'all', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="<%= image_url('fav.png') %>"/>
+	</head>
+	<body>
+    <%= render 'shared/nav' %>
+    <%= yield %>
+
+    <!--preloader-->
+    <div id="spinner-wrapper">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts
+    ================================================= -->
+    <% Rails.application.config.assets.precompile += %w( jquery-3.1.1.min.js ) %>
+    <% Rails.application.config.assets.precompile += %w( bootstrap.min.js ) %>
+    <% Rails.application.config.assets.precompile += %w( jquery.appear.min.js ) %>
+    <% Rails.application.config.assets.precompile += %w( jquery.incremental-counter.js ) %>
+    <% Rails.application.config.assets.precompile += %w( script.js ) %>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= javascript_include_tag 'jquery-3.1.1.min.js', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= javascript_include_tag 'bootstrap.min.js', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= javascript_include_tag 'jquery.appear.min.js', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= javascript_include_tag 'jquery.incremental-counter.js', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+    <%= javascript_include_tag 'script.js', 'data-turbolinks-track': 'reload', 'data-turbolinks-eval': 'false' %>
+		<script>
+		$(function(){
+		    $('#file_button').click(function(){
+		        $('#file_input').click();
+		    });
+		});
+		</script>
+	</body>
+</html>

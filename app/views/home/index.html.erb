@@ -1,0 +1,103 @@
+<div id="lp-register">
+  <div class="container wrapper">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="intro-texts">
+          <h1 class="text-white">Arkadaşlıklar edin</h1>
+          <p>Arkadaş bul, fotoğraf ve video paylaş. <br /></p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-sm-offset-1">
+        <div class="reg-form-container">
+
+          <!-- Register/Login Tabs-->
+          <div class="reg-options">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#register" data-toggle="tab">Kayıt Ol</a></li>
+              <li><a href="#login" data-toggle="tab">Giriş Yap</a></li>
+            </ul><!--Tabs End-->
+          </div>
+
+          <!--Registration Form Contents-->
+          <div class="tab-content">
+            <div class="tab-pane active" id="register">
+              <h3>Kayıt Ol</h3>
+              <p class="text-muted">Bugün kayıt ol ve insanlarla tanış</p>
+
+              <!--Register Form-->
+              <%= form_tag('/users', method: "post", html: {id: "registration_form", name: "registration_form", class:"form-inline"}) do |f| %>
+                <div class="row">
+                  <div class="form-group col-xs-6">
+                    <label for="firstname" class="sr-only">İsim</label>
+                    <input id="firstname" class="form-control input-group-lg" type="text" name="user[first_name]" title="İsminizi girin" placeholder="İsim"/>
+                  </div>
+                  <div class="form-group col-xs-6">
+                    <label for="lastname" class="sr-only">Soyisim</label>
+                    <input id="lastname" class="form-control input-group-lg" type="text" name="user[last_name]" title="Soyisminizi girin" placeholder="Soyisim"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label for="email" class="sr-only">Email</label>
+                    <input id="email" class="form-control input-group-lg" type="text" name="user[email]" title="Mail adresinizi girin" placeholder="Email"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label for="password" class="sr-only">Şifre</label>
+                    <input id="password" class="form-control input-group-lg" type="password" name="user[password]" title="Şifrenizi girin" placeholder="Şifre"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label for="password" class="sr-only">Şifre Tekrar</label>
+                    <input id="password" class="form-control input-group-lg" type="password" name="user[password_confirmation]" title="Şifrenizi tekrar girin" placeholder="Şifre Tekrar"/>
+                  </div>
+                </div>
+                <p><a href="/users/sign_up">Zaten hesabınız var mı?</a></p>
+                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+              <% end %><!--Register Now Form Ends-->
+            </div><!--Registration Form Contents Ends-->
+
+            <!--Login-->
+            <div class="tab-pane" id="login">
+              <h3>Giriş yap</h3>
+              <p class="text-muted">Hesabınıza erişin</p>
+
+              <!--Login Form-->
+              <%= form_tag('/users/sign_in', method: "post", html: {id: "registration_form", name: "registration_form", class:"form-inline"}) do |f| %>
+                 <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label for="my-email" class="sr-only">Email</label>
+                    <input id="my-email" class="form-control input-group-lg" type="text" name="user[email]" title="Mail adresinizi girin" placeholder="Rmail"/>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-xs-12">
+                    <label for="my-password" class="sr-only">Şifre</label>
+                    <input id="my-password" class="form-control input-group-lg" type="password" name="user[password]" title="Şifrenizi girin" placeholder="Şifre"/>
+                  </div>
+                </div>
+                <p><a href="/users/password/new">Şifrenizi mi unuttunuz?</a></p>
+                <button class="btn btn-primary">Giriş Yap</button>
+              <% end %><!--Login Form Ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-6">
+
+        <!--Social Icons-->
+        <ul class="list-inline social-icons">
+          <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+          <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+          <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+          <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+          <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

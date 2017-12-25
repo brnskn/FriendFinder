@@ -1,0 +1,2 @@
+$('#comments-<%=@comment.post.id%>').append('<div class="post-comment"><p><a href="#" class="profile-link"><%= @comment.user.first_name %> </a><i class="em em-laughing"></i> <%= @comment.bdy %> </p>');
+$('#comment_input-<%=@comment.post.id%>').val("");
