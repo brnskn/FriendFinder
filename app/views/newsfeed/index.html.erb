@@ -19,25 +19,25 @@
         <!-- Post Create Box
         ================================================= -->
         <div class="create-post">
-          <div class="row">
-            <%= form_with(model: @post, local: true) do |form| %>
-            <div class="col-md-9 col-sm-9">
-              <div class="form-group">
-                <%= form.text_field :title, id: :post_title, style: "width: 1px; visibility: hidden;" %>
-                <%= form.text_area :msg, id: :post_msg, cols:'100', rows:'1', class:'form-control', placeholder: "Ne düşünüyorsun?", style:"height: 50px;"%>
-                <%= form.file_field :image, style: "width: 1px; visibility: hidden;", id: "file_input" %>
+          <%= form_with(model: @post, local: true) do |form| %>
+            <div class="row">
+              <div class="col-md-9 col-sm-9">
+                <div class="form-group">
+                  <%= form.text_field :title, id: :post_title, style: "width: 1px; visibility: hidden;" %>
+                  <%= form.text_area :msg, id: :post_msg, cols:'100', rows:'1', class:'form-control', placeholder: "Ne düşünüyorsun?", style:"height: 50px;", required: "required"%>
+                  <%= form.file_field :image, style: "width: 1px; visibility: hidden;", id: "file_input" %>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-3">
+                <div class="tools">
+                  <ul class="publishing-tools list-inline">
+                    <li><a href="#" id="file_button"><i class="ion-images"></i></a></li>
+                  </ul>
+                  <button type="submit" class="btn btn-primary pull-right">Yayınla</button>
+                </div>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="tools">
-                <ul class="publishing-tools list-inline">
-                  <li><a href="#" id="file_button"><i class="ion-images"></i></a></li>
-                </ul>
-                <button type="submit" class="btn btn-primary pull-right">Yayınla</button>
-              </div>
-            </div>
-            <% end %>
-          </div>
+          <% end %>
         </div><!-- Post Create Box End-->
 
         <!-- Post Content

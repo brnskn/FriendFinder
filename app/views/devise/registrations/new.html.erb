@@ -24,7 +24,7 @@
                   <i class="icon ion-android-call"></i>
                   <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Şifre" %>
                   <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <em>(minimum <%= @minimum_password_length %> karakter)</em>
                   <% end %><br />
                 </div>
                 <div class="form-group">

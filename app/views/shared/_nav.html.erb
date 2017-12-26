@@ -19,11 +19,11 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right main-menu">
           <% if user_signed_in? %>
-            <li><%= link_to(current_user.first_name + ' ' + current_user.last_name, edit_user_registration_path) %></li>
-            <li><%= link_to('Çıkış', destroy_user_session_path, :method => :delete) %></li>
+            <li class="dropdown"><%= link_to(current_user.first_name + ' ' + current_user.last_name, edit_user_registration_path) %></li>
+            <li class="dropdown"><%= link_to('Çıkış', destroy_user_session_path, :method => :delete) %></li>
           <% else %>
-            <li><%= link_to('Giriş', new_user_session_path) %></li>
-            <li><%= link_to('Kayıt', new_user_registration_path) %></li>
+            <li class="dropdown"><%= link_to('Giriş', new_user_session_path) %></li>
+            <li class="dropdown"><%= link_to('Kayıt', new_user_registration_path) %></li>
           <% end %>
         </ul>
         <!--<form class="navbar-form navbar-right hidden-sm">

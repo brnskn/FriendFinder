@@ -28,7 +28,7 @@
                   <i class="icon ion-android-call"></i>
                   <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Şifre" %>
                   <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <em>(minimum <%= @minimum_password_length %> karakter)</em>
                   <% end %><br />
                 </div>
                 <div class="form-group">
@@ -37,14 +37,14 @@
                 </div>
                 <div class="form-group">
                   <i class="icon ion-email"></i>
-                  <%= f.password_field :current_password, autofocus: "off", class: "form-control", placeholder: "Mevcut Şifreniz" %>
+                  <%= f.password_field :current_password, autofocus: "off", class: "form-control", placeholder: "Mevcut Şifreniz", required: "required" %>
                 </div>
 
                 <button type="submit" class="btn-primary">Kaydet</button>
               <% end %>
-              <h3>Cancel my account</h3>
+              <h3>Hesabımı sil</h3>
 
-              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+              <p>Mutsuz musun? <%= button_to "Hesabımı sil", registration_path(resource_name), data: { confirm: "Emin misin?" }, method: :delete, class: "btn btn-primary" %></p>
             </div>
           </div>
         </div>
